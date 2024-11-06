@@ -10,8 +10,10 @@ class AddNoteModelSheet extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: 18),
       child:  Column(
           children: [
-            SizedBox(height: 25),
-            CustomTextField(),
+            SizedBox(height: 35),
+            CustomTextField(hintText: 'Title',),
+            SizedBox(height: 20),
+            CustomTextField(hintText: 'content', maxlines: 5,)
           ],
       ),
     );
