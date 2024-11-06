@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:note/views/widgets/constant.dart';
 
-// ignore: must_be_immutable
-class CustomButton extends StatelessWidget {
-     CustomButton({super.key,this.ontap});
 
-  void Function()? ontap;
+class CustomButton extends StatelessWidget {
+    const CustomButton({super.key,this.ontap});
+
+  final void Function()? ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

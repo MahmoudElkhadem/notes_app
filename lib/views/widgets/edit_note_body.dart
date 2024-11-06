@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:note/views/widgets/custom_appbar.dart';
-import 'package:note/views/widgets/custom_botton.dart';
 import 'package:note/views/widgets/custom_text_field.dart';
 
 class EditNoteBody extends StatelessWidget {
@@ -14,16 +13,14 @@ class EditNoteBody extends StatelessWidget {
         child: Column(
           children: [
              const SizedBox(height: 40),
-             const CustomAppbar(icon: Icons.done,title: 'Edit Page',),
+             CustomAppbar(icon: Icons.check,title: 'Edit Page',ontap: (){
+              return Navigator.pop(context);
+             }),
              const SizedBox(height: 40),
              const CustomTextField(hintText: 'Title'),
              const SizedBox(height: 50),
              const CustomTextField(hintText: 'Contant',maxlines: 6,),
              const SizedBox(height: 50),
-             CustomButton
-             (ontap: (){
-              Navigator.pop(context);
-              },)
           ],
         ),
       ),
