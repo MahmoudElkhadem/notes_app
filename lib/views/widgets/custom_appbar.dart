@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class CustomAppbar extends StatelessWidget {
   const CustomAppbar({super.key, this.icon = Icons.search, this.title = 'Notes',this.ontap});
 
@@ -11,26 +12,23 @@ class CustomAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: ontap,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-           Text(title,
-          style: const TextStyle(
-            fontSize: 28
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+         Text(title,
+        style: const TextStyle(
+          fontSize: 28
+        ),
+        ),
+        Container(
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(.2),
+            borderRadius: BorderRadius.circular(10),
           ),
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(.2),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child:  IconButton(onPressed: (){},icon: Icon(icon,size: 27,)),
-          )
-      ],),
-    );
+          child:  IconButton(onPressed: ontap,icon: Icon(icon,size: 27,)),
+        )
+    ],);
   }
 }

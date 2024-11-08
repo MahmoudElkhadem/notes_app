@@ -13,9 +13,12 @@ class EditNoteBody extends StatelessWidget {
         child: Column(
           children: [
              const SizedBox(height: 40),
-             CustomAppbar(icon: Icons.check,title: 'Edit Page',ontap: (){
-              return Navigator.pop(context);
-             }),
+             CustomAppbar(
+              icon: Icons.check,
+             title: 'Edit Page',
+             ontap: () {
+               return Navigator.pop(context);
+             },),
              const SizedBox(height: 40),
              const CustomTextField(hintText: 'Title'),
              const SizedBox(height: 50),
