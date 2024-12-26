@@ -7,26 +7,26 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 class AddNoteModelSheet extends StatelessWidget {
   const AddNoteModelSheet({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: BlocConsumer<AddNotesCubit, AddNotesState>(
           listener: (context, state) {
-            if(state is AddNotesSuccess){
+            if (state is AddNotesSuccess) {
               Navigator.pop(context);
             }
-            if(state is AddNotesFailer){
+            if (state is AddNotesFailer) {
               // ignore: avoid_print
               print('failure ${state.errMessage}');
             }
           },
           builder: (context, state) {
-            return  ModalProgressHUD(
-              inAsyncCall: state is AddNotesLoading ? true : false,
-              child: const AddNoteForm());
+            return ModalProgressHUD(
+                inAsyncCall: state is AddNotesLoading ? true : false,
+                child: const SingleChildScrollView(child: AddNoteForm()));
           },
         ),
       ),
