@@ -18,7 +18,7 @@ class CustomNoteItem extends StatelessWidget {
       child: Container(
         padding:const EdgeInsets.only(top: 23,bottom: 23,left:5),
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(10)
         ),
         child: Column(
