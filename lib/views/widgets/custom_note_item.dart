@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note/model/note_model.dart';
 import 'package:note/views/notes_edit.dart';
 
@@ -27,7 +29,11 @@ class CustomNoteItem extends StatelessWidget {
             ListTile(
               title: Text(note.title,style:const TextStyle(fontSize: 25,color: Colors.black)),
               subtitle: Text(note.contant,style: TextStyle(fontSize: 19,color: Colors.black.withOpacity(.5))),
-              trailing: IconButton(onPressed: (){note.delete();} , icon: const Icon(Icons.delete,color: Colors.black,size: 30,)),
+              trailing: IconButton(
+                onPressed: (){
+                  note.delete();
+                  BlocProvider.of<NotesCubit>(context).fechAllNotes();
+                  } , icon: const Icon(Icons.delete,color: Colors.black,size: 30,)),
             ),
              Padding(
                padding: const EdgeInsets.only(right: 15),
