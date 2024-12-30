@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note/cubits/notes_cubit/notes_cubit.dart';
+import 'package:note/model/note_model.dart';
 import 'package:note/views/widgets/custom_appbar.dart';
 import 'package:note/views/widgets/custom_text_field.dart';
 
-class EditNoteBody extends StatelessWidget {
-  const EditNoteBody({super.key});
+class EditNoteBody extends StatefulWidget {
+  const EditNoteBody({super.key, required this.note});
 
+  final NoteModel note;
+
+  @override
+  State<EditNoteBody> createState() => _EditNoteBodyState();
+}
+
+class _EditNoteBodyState extends State<EditNoteBody> {
+
+  String? title , content;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,13 +28,28 @@ class EditNoteBody extends StatelessWidget {
              CustomAppbar(
               icon: Icons.check,
              title: 'Edit Page',
-             ontap: () {
+             onPressed: () {
+              widget.note.title = title ?? widget.note.title;
+              widget.note.contant = content ?? widget.note.contant;
+              widget.note.save();
+              BlocProvider.of<NotesCubit>(context).fechAllNotes();
                return Navigator.pop(context);
              },),
              const SizedBox(height: 40),
-             const CustomTextField(hintText: 'Title'),
+              CustomTextField(
+              hintText: 'Title',
+              onchanged: (value) {
+                title = value;
+              },
+              ),
              const SizedBox(height: 50),
-             const CustomTextField(hintText: 'Contant',maxlines: 6,),
+             CustomTextField(
+              hintText: 'Contant',
+              maxlines: 6,
+              onchanged: (value) {
+                content = value;
+              },
+              ),
              const SizedBox(height: 50),
           ],
         ),
